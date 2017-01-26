@@ -79,4 +79,67 @@
         android:layout_alignLeft="@+id/btnTrans2"
         android:layout_alignStart="@+id/btnTrans2" />
 
+    <Button
+        android:text="DIAL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="39dp"
+        android:id="@+id/btnDial" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_alignBottom="@+id/btnDial"
+        android:layout_toRightOf="@+id/btnDial"
+        android:id="@+id/etDial"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:hint="input phone numbers" />
+
+    <Button
+        android:text="BROWSE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnDial"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/btnBrowse" />
+
+    <Button
+        android:text="SMS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnBrowse"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/btnSMS" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_alignBottom="@+id/btnSMS"
+        android:layout_toRightOf="@+id/btnSMS"
+        android:id="@+id/etSMS"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/etBrowse"
+        android:layout_above="@+id/btnSMS"
+        android:layout_toRightOf="@+id/btnBrowse"
+        android:hint="URL"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

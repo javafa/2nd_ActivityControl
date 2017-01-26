@@ -35,11 +35,11 @@ public class TransActivity extends AppCompatActivity implements View.OnClickList
         finish();
     }
 
-    @Override
-    public void onBackPressed() {
-        returnValue();
-        super.onBackPressed();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        returnValue();
+//        super.onBackPressed();
+//    }
 
     private void returnValue(){
         Intent intent = new Intent();

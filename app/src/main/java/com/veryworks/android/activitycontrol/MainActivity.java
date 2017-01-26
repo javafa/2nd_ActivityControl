@@ -1,8 +1,10 @@
 package com.veryworks.android.activitycontrol;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,8 +19,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     public static final String TAG = "MainActivity";
 
-    Button btnCom,btnTrans1,btnTrans2;
-    EditText et;
+    Button btnCom,btnTrans1,btnTrans2,btnDial,btnBrowse,btnSMS;
+    EditText et,etDial,etBrowse,etSMS;
     TextView tv1,tv2;
 
     @Override
@@ -29,14 +31,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnCom = (Button) findViewById(R.id.btnCommon);
         et = (EditText) findViewById(R.id.editText);
 
+        // 1. 액티비티 라이프 사이클 테스트
         btnTrans1 = (Button) findViewById(R.id.btnTrans1);
         btnTrans2 = (Button) findViewById(R.id.btnTrans2);
         tv1 = (TextView) findViewById(R.id.tv1);
         tv2 = (TextView) findViewById(R.id.tv2);
 
+        // 2. 묵시적 intent 사용해 보기
+        btnDial = (Button) findViewById(R.id.btnDial);
+        btnBrowse = (Button) findViewById(R.id.btnBrowse);
+        btnSMS = (Button) findViewById(R.id.btnSMS);
+
+        etDial = (EditText) findViewById(R.id.etDial);
+        etBrowse = (EditText) findViewById(R.id.etBrowse);
+        etSMS = (EditText) findViewById(R.id.etSMS);
+
         btnCom.setOnClickListener(this);
         btnTrans1.setOnClickListener(this);
         btnTrans2.setOnClickListener(this);
+
+        btnDial.setOnClickListener(this);
+        btnBrowse.setOnClickListener(this);
+        btnSMS.setOnClickListener(this);
     }
 
     public static final int ONE = 1;
@@ -45,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view){
         Intent intent = null;
+        String value = "";
+
         switch (view.getId()){
             case R.id.btnCommon:
                 // # 액티비티로 값 넘기기
@@ -53,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // 2. putExtra 함수에 전달할 값 설정
                 intent.putExtra("var", et.getText().toString());
                 intent.putExtra("var2", "aaaa");
-                intent.putExtra("var3", 33333);
                 // 3. Extra 에 담긴 값을 intent로 전달한다.
                 startActivity(intent);
                 break;
@@ -64,20 +81,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(this, TransActivity.class);
                 // 2. putExtra 함수에 전달할 값 설정
                 intent.putExtra("var", et.getText().toString());
-                intent.putExtra("varNum", 33333);
-                // 3.
+                // 3. 돌려받기 위한 액티비티 호출
                 startActivityForResult(intent, ONE);
                 break;
 
             case R.id.btnTrans2:
-                // # 호출한 액티비티로 부터 값을 돌려 받을 때
-                // 1. 인텐트 생성
                 intent = new Intent(this, TransActivity.class);
-                // 2. putExtra 함수에 전달할 값 설정
                 intent.putExtra("var", et.getText().toString());
                 intent.putExtra("varNum", 33333);
-                // 3. 액티비티를 호출
                 startActivityForResult(intent, TWO);
+                break;
+
+            case R.id.btnDial:
+                // # 묵시적 intent 사용하기
+                value = etDial.getText().toString();
+                                  // 1. 인텐트 액션 정의  // 2. Uri 입력 = 프로토콜 + 데이터 형태
+                intent = new Intent(Intent.ACTION_DIAL, Uri.parse( "tel:" + value ) );
+                // 3. intent 전달
+                startActivity(intent);
+                break;
+            case R.id.btnBrowse :
+                value = etBrowse.getText().toString();
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse( "http://" + value ) );
+                startActivity(intent);
+                break;
+            case R.id.btnSMS :
+                value = etSMS.getText().toString();
+                intent = new Intent(Intent.ACTION_SENDTO, Uri.parse( "smsto:" + value ) );
+                startActivity(intent);
                 break;
         }
     }
