@@ -46,6 +46,7 @@ onCreate() -> onStart() -> onResume() -> Running(러닝은 상태없음) -> onPa
         Intent intent = new Intent();
         intent.putExtra("result", " 처리된 값 ");
 
+        // setResult 함수가 호출한 Activity의 onActivityResult 함수를 자동으로 호출한다.
         setResult(RESULT_OK, intent);
 
         // finish() 를 호출하여 현재 Activity 를 닫는다.
