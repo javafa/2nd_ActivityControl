@@ -13,8 +13,6 @@ import android.widget.TextView;
 /**
  * 1. Activity 라이프 사이클 관리
  * 2. 액티비티 간에 값 주고 받기
- *
- *
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     public static final String TAG = "MainActivity";
