@@ -3,8 +3,7 @@ Activity 라이프사이클 및 컴포넌트 다루기
 
 ## Activity LifeCycle
 
-onCreate() -> onStart() -> onResume() -> Running(러닝은 상태없음) -> onPause() -> onStop() -> onDestroy()
-                                                                                           onRestart()
+onCreate() -> onStart() -> onResume() -> Running(러닝은 상태없음) -> onPause() -> onStop() -> [onRestart()] onDestroy()
 
 ## Activity 호출하기
 
